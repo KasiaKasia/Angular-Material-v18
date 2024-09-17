@@ -1,0 +1,13 @@
+.dashboard {
+    margin: 100px 20px;
+    display: block;
+  
+}
+
+@media only screen and (max-width: 768px) {
+    .dashboard {
+        display: flex;
+        margin-top: 21rem;
+        justify-content: center;
+    }
+}

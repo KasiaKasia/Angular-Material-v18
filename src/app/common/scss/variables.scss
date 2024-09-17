@@ -1,0 +1,18 @@
+$white: white;
+$vivid-cyan: oklch(82% 0.136 206.47 / 72);
+$black: black;
+$box-shadow-black: 0 0 3px 0 $black; 
+
+@mixin border {
+    border-width: 1px;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, #56ccf7, rgb(10 51 87 / 91%)25%);
+    border-style: solid;
+    box-shadow: 1px 2px 2px 0px rgb(10 51 87 / 91%);
+   
+
+}
+
+@mixin background {
+    background: linear-gradient(to right, #56ccf7, rgba(10, 51, 87, 0.91) 15%);
+}

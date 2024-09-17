@@ -1,0 +1,44 @@
+<div class="dialog">
+  <div class="dialog__title">EDYTUJ PIERWIASTEK CHEMICZNY</div>
+
+  <form class="dialog__body" [formGroup]="formBuilderGroup">
+
+    <mat-form-field class="dialog__field">
+      <mat-label>Position</mat-label>
+      <input matInput id="position" name="position" formControlName="position">
+      @if(formBuilderGroup.get('position')?.hasError('required')){
+        <mat-error> Pole jest wymagane </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="dialog__field">
+      <mat-label>Name</mat-label>
+      <input matInput id="name" name="name" formControlName="name">
+      @if(formBuilderGroup.get('name')?.hasError('required')){
+        <mat-error> Pole jest wymagane </mat-error>
+      }
+
+    </mat-form-field>
+
+    <mat-form-field class="dialog__field">
+      <mat-label>Weight</mat-label>
+      <input matInput id="weight" name="weight" formControlName="weight">
+      @if(formBuilderGroup.get('weight')?.hasError('required')){
+        <mat-error> Pole jest wymagane </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="dialog__field">
+      <mat-label>Symbol</mat-label>
+      <input matInput id="symbol" name="symbol" formControlName="symbol">
+      @if(formBuilderGroup.get('symbol')?.hasError('required')){
+        <mat-error> Pole jest wymagane </mat-error>
+      }
+    </mat-form-field>
+
+    <div class="dialog__actions">
+      <button mat-button (click)="cancel()">Anuluj</button>
+      <button mat-button (click)="save()">Zapisz</button>
+    </div>
+  </form>
+</div>

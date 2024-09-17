@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import './app/common/scss/variables.scss';
+@import './app/common/scss/app.scss';
+@import './app/common/scss/navbar.scss';
+@import './app/common/scss/dashboard.scss';
+@import './app/common/scss/table.scss'; 
+@import './app/common/scss/dialog.scss';
+@import './app/common/scss/loading.scss';
+
+body {   
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+

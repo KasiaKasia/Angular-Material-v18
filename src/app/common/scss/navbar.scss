@@ -1,0 +1,39 @@
+.navbar {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    background: linear-gradient(to right, #56ccf7, rgb(10 51 87 / 91%) 15%);
+    box-shadow: $box-shadow-black;
+
+    .navbar__wrapper {
+        display: flex;
+        margin: 5px 10px;
+        padding: 10px; 
+        border-radius: 20px;
+
+        .navbar__section {
+            margin: 5px 10px;
+
+            .navbar__routerLink {
+                cursor: pointer;
+                text-decoration: none;
+                color: $vivid-cyan;
+            }
+        }
+        &:hover {
+            background: color-mix(in srgb, $vivid-cyan 15%, transparent);
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        display: grid;
+        justify-content: center;
+
+        .navbar__wrapper {
+            width: 200px;
+        }
+    }
+}

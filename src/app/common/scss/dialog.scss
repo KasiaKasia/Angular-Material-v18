@@ -1,0 +1,42 @@
+.dialog {
+    @include border;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+}
+
+.dialog__title {
+    font-size: 0.875rem;
+    margin-bottom: 20px;
+    text-align: center;
+    letter-spacing: 0.006rem;
+    font-weight: inherit;
+}
+
+.dialog__body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.dialog__field {
+    margin: 10px;
+    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        background-color: rgb(247 248 255);
+    }
+}
+
+.dialog__actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
