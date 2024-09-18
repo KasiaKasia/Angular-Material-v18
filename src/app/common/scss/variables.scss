@@ -1,7 +1,12 @@
-$white: white;
-$vivid-cyan: oklch(82% 0.136 206.47 / 72);
-$black: black;
-$box-shadow-black: 0 0 3px 0 $black; 
+$color-white: white;
+$color-vivid-cyan: oklch(82% 0.136 206.47 / 72);
+$color-black: black;
+$color-red: #ff0000;
+$box-shadow-black: 0 0 3px 0 $color-black; 
+$gradient-text-color-red: linear-gradient(to right, #f59095e8 0%, $color-red 100%);
+$gradient-text-color-blue-20: linear-gradient(to right, #25a5d5, rgb(17 59 95 / 91%) 20%);
+$gradient-text-color-blue-70: linear-gradient(to right, #25a5d5, rgb(17 59 95 / 91%) 70%);
+$gradient-text-color-gray-70: linear-gradient(to right, #f0f0f0, rgba(95, 97, 99, 0.91) 70%);
 
 @mixin border {
     border-width: 1px;
@@ -9,8 +14,6 @@ $box-shadow-black: 0 0 3px 0 $black;
     border-image-source: linear-gradient(to right, #56ccf7, rgb(10 51 87 / 91%)25%);
     border-style: solid;
     box-shadow: 1px 2px 2px 0px rgb(10 51 87 / 91%);
-   
-
 }
 
 @mixin background {

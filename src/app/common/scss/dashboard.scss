@@ -1,13 +1,39 @@
+@mixin dashboard__section {
+    border-width: 1px;
+    border-image-slice: 1;
+    border-image-source: $gradient-text-color-blue-20;
+    border-style: solid;
+    padding: 2rem 1rem;
+    margin: 15px 155px;
+    box-shadow: 1px 2px 2px 0px rgb(135, 160, 212);
+}
+
 .dashboard {
     margin: 100px 20px;
     display: block;
-  
+
+    .dashboard__section-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        @include dashboard__section;
+
+        &--title {
+            margin-bottom: 40px;
+        }
+
+        &--error {
+            text-align: center; 
+        }
+        
+        &--filter {
+            flex-direction: row;
+        }
+    }
 }
 
 @media only screen and (max-width: 768px) {
     .dashboard {
-        display: flex;
-        margin-top: 21rem;
-        justify-content: center;
+        margin-top: 140px;
     }
 }

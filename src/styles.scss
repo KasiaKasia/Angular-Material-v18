@@ -6,8 +6,10 @@
 @import './app/common/scss/table.scss'; 
 @import './app/common/scss/dialog.scss';
 @import './app/common/scss/loading.scss';
+@import './app/common/scss/text-color.scss';
 
 body {   
-    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    margin: 0px;
 }
 

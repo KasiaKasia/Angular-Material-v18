@@ -1,10 +1,10 @@
-<div class="table__container--filter">
-  <div class="dialog__title">FILTER</div>
+<div class="dashboard__section-body dashboard__section-body--filter">
   <mat-form-field class="dialog__field">
+    <mat-label>FILTER</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Filtruj elementy" />
-  </mat-form-field>
-</div> 
- 
+  </mat-form-field> 
+</div>
+
 @if(isLoading){
 <div class="container">
   <section>
@@ -21,7 +21,7 @@
   </section>
 </div>
 } @else {
-<div class="table__container">
+<div class="container__table">
   <table mat-table [dataSource]="dataSource">
     @for (nameCol of displayedColumns; track $index) {
     <ng-container matColumnDef="{{nameCol}}">

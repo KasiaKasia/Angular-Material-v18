@@ -18,11 +18,11 @@
             .navbar__routerLink {
                 cursor: pointer;
                 text-decoration: none;
-                color: $vivid-cyan;
+                color: $color-vivid-cyan;
             }
         }
         &:hover {
-            background: color-mix(in srgb, $vivid-cyan 15%, transparent);
+            background: color-mix(in srgb, $color-vivid-cyan 15%, transparent);
         }
     }
 }
