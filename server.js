@@ -49,5 +49,5 @@ app.get('/chemical-elements', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+    console.info(`Server running at http://localhost:${port}`);
 });

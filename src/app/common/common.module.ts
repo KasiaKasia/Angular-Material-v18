@@ -20,4 +20,4 @@ import { HomeComponent } from './home/home.component';
     FooterComponent
   ]
 })
-export class CommonModules { }
+export class CommonModules {}

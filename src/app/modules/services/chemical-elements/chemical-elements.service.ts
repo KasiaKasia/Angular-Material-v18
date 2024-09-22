@@ -8,7 +8,7 @@ import { Response } from '../../model/model';
   providedIn: 'root'
 })
 export class ChemicalElementsService {
-  constructor(public httpClient: HttpClient) { }
+  constructor(public httpClient: HttpClient) {}
  
   public getListOfChemicalElements(): Observable<Response> {
  

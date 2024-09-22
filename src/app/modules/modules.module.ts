@@ -9,4 +9,4 @@ import { TableComponent } from './components/table/table.component';
     TableComponent, 
   ] 
 })
-export class ModulesModule { }
+export class ModulesModule {}

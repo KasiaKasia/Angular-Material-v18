@@ -1,11 +1,11 @@
-import { Component,  DestroyRef, effect, inject, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, DestroyRef, effect, inject, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ColumnKeys, PeriodicElement } from '../../model/model';
 import { UpperCasePipe } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ChemicalElementsService } from '../../service/chemical-elements/chemical-elements.service';
-import { LoadingService } from '../../service/loading/loading.service';
+import { ChemicalElementsService } from '../../services/chemical-elements/chemical-elements.service';
+import { LoadingService } from '../../services/loading/loading-signal.service';
 import { DialogFormComponent } from '../dialog-form/dialog-form.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,13 +13,15 @@ import { DialogConfirmationComponent } from '../dialog-confirmation/dialog-confi
 import { debounceTime, distinctUntilChanged, fromEvent, map, of, switchMap } from 'rxjs';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { RxState } from '@rx-angular/state';
+import { StateElementsService } from '../../state/state-elements.service';
 
 
 @Component({
   selector: 'app-table',
   standalone: true,
   imports: [MatTableModule, MatLabel, MatPaginatorModule, UpperCasePipe, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule],
-  providers: [ChemicalElementsService],
+  providers: [ChemicalElementsService, RxState],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
   encapsulation: ViewEncapsulation.None,
@@ -30,29 +32,24 @@ export class TableComponent implements OnInit {
   protected dataSource = new MatTableDataSource<PeriodicElement>([]);
   protected loadingService = inject(LoadingService)
   protected isLoading = this.loadingService.getLoading()
+ 
+  protected stateService = inject(StateElementsService);
+   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(
-    private dialog: MatDialog,
-    protected chemicalElementsService: ChemicalElementsService) {
+  constructor(private dialog: MatDialog) {
     effect(() => {
       this.isLoading = this.loadingService.getLoading()
       this.dataSource.paginator = this.paginator;
     });
+ 
   }
 
   ngOnInit() {
-    this.chemicalElementsService.getListOfChemicalElements()
-      .pipe(
-        takeUntilDestroyed(this.destroyRef)
-      )
-      .subscribe(req => {
-        if (req && req.respons) {
-          this.dataSource = new MatTableDataSource<PeriodicElement>(req.respons)
-          this.dataSource.paginator = this.paginator;
-        }
-      })
+    this.stateService.elements$.subscribe(elements => {
+      this.dataSource = new MatTableDataSource<PeriodicElement>(elements);
+      this.dataSource.paginator = this.paginator;
+    });
   }
 
   openEditDialog(elementToChange: PeriodicElement): void {
@@ -92,15 +89,16 @@ export class TableComponent implements OnInit {
     this.dataSource.data = updatedData;
   }
 
-  applyFilter(event: Event) { 
+  
+  applyFilter(event: Event) {
     fromEvent(event.target as HTMLInputElement, 'input').pipe(
+      debounceTime(2000),   
       map((e: Event) => (e.target as HTMLInputElement).value),
-      debounceTime(2000),
-      distinctUntilChanged(),
+      distinctUntilChanged(),   
       takeUntilDestroyed(this.destroyRef),
-    ).subscribe(value => { 
-      value ? this.dataSource.filter = value.trim().toLowerCase(): this.dataSource;
+    ).subscribe(value => {
+      this.dataSource.filter = value.trim().toLowerCase();   
     });
-  }
+  } 
 }
 

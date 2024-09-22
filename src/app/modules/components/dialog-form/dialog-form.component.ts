@@ -2,15 +2,17 @@ import { Component, DestroyRef, inject, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA,  MatDialogRef } from '@angular/material/dialog';
 import { PeriodicElement } from '../../model/model';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { NgIf } from '@angular/common';
+import { NgIf } from '@angular/common'; 
+import { CommaToDotDirective } from '../directives/comma-to-dot.directive';
+import { digitsAndDotValidator } from '../validators/validator';
 
 @Component({
   selector: 'app-dialog-form',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatButtonModule, NgIf],
+  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatButtonModule, NgIf, CommaToDotDirective, MatFormField],
   templateUrl: './dialog-form.component.html',
   styleUrl: './dialog-form.component.scss',
 })
@@ -26,7 +28,7 @@ export class DialogFormComponent {
   formBuilderGroup: FormGroup = this.formBuilder.group({
     position: this.formBuilder.control({ value: 0, disabled: true }, [Validators.required]),
     name: this.formBuilder.control('', [Validators.required]),
-    weight: this.formBuilder.control(0, [Validators.required]),
+    weight: this.formBuilder.control(0, [Validators.required, digitsAndDotValidator()]),
     symbol: this.formBuilder.control('', [Validators.required])
   });
 

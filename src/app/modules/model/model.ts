@@ -13,3 +13,8 @@ export interface Response {
   readonly message?: string,
   readonly respons?: any[]
 }
+
+export interface TableState {
+  elements: PeriodicElement[];
+  isLoading: boolean;
+}
