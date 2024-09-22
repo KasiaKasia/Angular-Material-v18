@@ -3,19 +3,20 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.2.
 
 
-## Here is the translation:
 **Steps to start the application**
 
-1. Install the necessary libraries to run the Angular application:
+1. Clone the repository by executing the command:
+  `git clone git clone https://github.com/KasiaKasia/Angular-Material-v18.git`
+2. Install the necessary libraries to run the Angular application:
    `npm i`   
-2. Install the necessary libraries to run the server in Node.js:
+3. Install the necessary libraries to run the server in Node.js:
    `npm install express`   
    `npm install cors`  
-3. Start the server:
+4. Start the server:
    `node server.js`
-4. Start the client server:
+5. Start the client server:
    `ng serve`   
-5. Open your web browser and enter the following address:
+6. Open your web browser and enter the following address:
    `http://localhost:4200/`
 
 
